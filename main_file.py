@@ -10,6 +10,7 @@ from data.school_plan import SchoolPlan
 from data.schedule import Schedule
 from data.progress import Progress
 import datetime
+import os
 from forms.user import RegisterForm, LoginForm, AddModerator, AddTeacher, \
     AddPupil, AddClass, AddSubject, Tabletime, AddTabletimeSubjects, ViewTableTime, ViewModerator, ViewTeacher,\
     ViewPupil, ChangePerson, ViewClass, Back, LessonsChoiceClass, Grades
@@ -789,10 +790,7 @@ def logout():
     return redirect("/login")
 
 
-def main():
-    db_session.global_init("db/electronic_diary.db")
-    app.run()
-
-
 if __name__ == '__main__':
-    main()
+    port = int(os.environ.get("PORT", 5000))
+    db_session.global_init("db/electronic_diary.db")
+    app.run(host='0.0.0.0', port=port)
