@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Просмотр классов</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.sort_by.label }}<br>
+            {{ form.sort_by(class="form-control", type="login") }}<br>
+            {% for error in form.sort_by.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+        <div>{{ message }}</div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Класс</th>
+                    <th>Действие</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for elem in classes %}
+                    {% if sort != 1 %}
+                        <tr>
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ elem }}</td>
+                        <td><a class="btn btn-danger" role="button" href="/deleteclass/{{ elem }}">Удалить</a></td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ elem.name_class }}</td>
+                        <td><a class="btn btn-danger" role="button" href="/deleteclass/{{ elem.name_class }}">Удалить</a></td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+    </form>
+{% endblock %}

@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <h1>Расписание</h1>
+        <form action="" method="post">
+                {{ form.hidden_tag() }}
+                {% if flag == True %}
+                        <link rel="stylesheet" href="/static/css/style.css">
+                        <div class="panel-group" id="accordion">
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                                Понедельник</a>
+                              </h4>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse in">
+                                {% for day in mon %}
+                                    {% for elem in day %}
+                                        {% if loop.index % 2 != 0 %}
+                                            <li><div class="panel-body">{{ elem }}</div></li>
+                                        {% else %}
+                                            <div class="panel-body">{{ elem }}</div>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+
+                          </div>
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                                Вторник</a>
+                              </h4>
+                            </div>
+                            <div id="collapse2" class="panel-collapse collapse in">
+                                {% for day in thur %}
+                                    {% for elem in day %}
+                                        {% if loop.index % 2 != 0 %}
+                                            <li><div class="panel-body">{{ elem }}</div></li>
+                                        {% else %}
+                                            <div class="panel-body">{{ elem }}</div>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                          </div>
+
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                                Среда</a>
+                              </h4>
+                            </div>
+
+                            <div id="collapse3" class="panel-collapse collapse in">
+                                {% for day in wedn %}
+                                    {% for elem in day %}
+                                        {% if loop.index % 2 != 0 %}
+                                            <li><div class="panel-body">{{ elem }}</div></li>
+                                        {% else %}
+                                            <div class="panel-body">{{ elem }}</div>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                          </div>
+
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+                                Четверг</a>
+                              </h4>
+                            </div>
+
+                            <div id="collapse4" class="panel-collapse collapse in">
+                                {% for day in tues %}
+                                    {% for elem in day %}
+                                        {% if loop.index % 2 != 0 %}
+                                            <li><div class="panel-body">{{ elem }}</div></li>
+                                        {% else %}
+                                            <div class="panel-body">{{ elem }}</div>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                          </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
+                                Пятница</a>
+                              </h4>
+                            </div>
+
+                            <div id="collapse5" class="panel-collapse collapse in">
+                                {% for day in fri %}
+                                    {% for elem in day %}
+                                        {% if loop.index % 2 != 0 %}
+                                            <li><div class="panel-body">{{ elem }}</div></li>
+                                        {% else %}
+                                            <div class="panel-body">{{ elem }}</div>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                          </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">
+                                Суббота</a>
+                              </h4>
+                            </div>
+
+                            <div id="collapse6" class="panel-collapse collapse in">
+                                {% for day in sat %}
+                                    {% for elem in day %}
+                                        {% if loop.index % 2 != 0 %}
+                                            <li><div class="panel-body">{{ elem }}</div></li>
+                                        {% else %}
+                                            <div class="panel-body">{{ elem }}</div>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                          </div>
+                {% endif %}
+                <p>{{ form.back(type="submit", class="btn btn-primary") }}</p>
+                <div>{{ message }}</div>
+        </form>
+{% endblock %}

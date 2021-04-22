@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if flag %}
+        <h1>{{ class_ }} {{ lesson }}</h1>
+    {% endif %}
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.class_.label }}<br>
+            {{ form.class_(class="form-control") }}<br>
+            {% for error in form.class_.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.subject.label }}<br>
+            {{ form.subject(class="form-control") }}<br>
+            {% for error in form.subject.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+        <div>{{ message }}</div>
+        {% if flag %}
+        <div class="row">
+            <div class="col-sm-6">
+                <p>
+                {{ form.pupil.label }}<br>
+                {{ form.pupil(class="form-control") }}<br>
+                {% for error in form.pupil.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                {% endfor %}
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <p>
+                {{ form.grade.label }}<br>
+                {{ form.grade(class="form-control") }}<br>
+                {% for error in form.grade.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                {% endfor %}
+                </p>
+            </div>
+        </div>
+        <p>{{ form.submit_2(type="submit", class="btn btn-primary") }}</p>
+        {% endif %}
+    </form>
+{% endblock %}

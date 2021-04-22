@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Просмотр предметов</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Предмет</th>
+                    <th>Преподаватель/-и</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for elem in subjects %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{ elem[0] }}</td>
+                    <td>{{ elem[1] }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        <p>{{ form.back(type="submit", class="btn btn-primary") }}</p>
+        <div>{{ message }}</div>
+    </form>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Просмотр оценок</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.sort_by.label }}<br>
+            {{ form.sort_by(class="form-control", type="login") }}<br>
+            {% for error in form.sort_by.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+        <div>{{ message }}</div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Предмет</th>
+                    <th>Дата</th>
+                    <th>Оценка</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for elem in pupils %}
+                    {% if sort != 1 %}
+                        <tr>
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ elem[0] }}</td>
+                        <td>{{ elem[1] }}</td>
+                        <td>{{ elem[2] }}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ elem.lesson.name_subject.subject }}</td>
+                        <td>{{ elem.grade }}</td>
+                        <td>{{ elem.date_of_grade}}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+    </form>
+{% endblock %}

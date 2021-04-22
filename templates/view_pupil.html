@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Просмотр и редактирование данных учащихся</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.sort_by.label }}<br>
+            {{ form.sort_by(class="form-control", type="login") }}<br>
+            {% for error in form.sort_by.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+        <div>{{ message }}</div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Отчество</th>
+                    <th>Класс</th>
+                    <th>Логин</th>
+                    <th>Пароль</th>
+                    <th>Изменение</th>
+                    <th>Удаление</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for elem in pupils %}
+                    {% if sort != 1 %}
+                        <tr>
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ elem[0] }}</td>
+                        <td>{{ elem[1] }}</td>
+                        <td>{{ elem[2] }}</td>
+                        <td>{{ elem[3] }}</td>
+                        <td>{{ elem[4] }}</td>
+                        <td>{{ elem[5] }}</td>
+                        <td><a class="btn btn-danger" role="button" href="/changepupil/{{ elem[3] }}">Изменить</a></td>
+                        <td><a class="btn btn-danger" role="button" href="/deletepupil/{{ elem[3] }}">Удалить</a></td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ elem.surname }}</td>
+                        <td>{{ elem.name }}</td>
+                        <td>{{ elem.patronymic}}</td>
+                        <td>{{ elem.name_class_orm.name_class}}</td>
+                        <td>{{ elem.input_data_orm.login }}</td>
+                        <td>{{ elem.input_data_orm.password }}</td>
+                        <td><a class="btn btn-danger" role="button" href="/changepupil/{{ elem.input_data_orm.login }}">Изменить</a></td>
+                        <td><a class="btn btn-danger" role="button" href="/deletepupil/{{ elem.input_data_orm.login }}">Удалить</a></td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+    </form>
+{% endblock %}

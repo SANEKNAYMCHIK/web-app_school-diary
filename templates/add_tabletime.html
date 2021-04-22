@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Добавление расписания</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.class_.label }}<br>
+            {{ form.class_(class="form-control") }}<br>
+            {% for error in form.class_.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    {{ form.button_1(type="submit", class="btn btn-primary") }}
+                </div>
+                <div class="col">
+                    {{ form.button_2(type="submit", class="btn btn-warning") }}
+                </div>
+                <div class="col">
+                    {{ form.button_3(type="submit", class="btn btn-info") }}
+                </div>
+                <div class="col">
+                    {{ form.button_4(type="submit", class="btn btn-warning") }}
+                </div>
+                <div class="col">
+                    {{ form.button_5(type="submit", class="btn btn-dark") }}
+                </div>
+                <div class="col">
+                    {{ form.button_6(type="submit", class="btn btn-success") }}
+                    <div>{{ message }}</div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+{% endblock %}
