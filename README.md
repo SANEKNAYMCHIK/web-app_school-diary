@@ -1,3 +1,4 @@
-# web-app_school-diary
+# web-app_school-diaryj
 https://web-app-school-diary.herokuapp.com/
-<ol>Веб-приложение "Электронный дневник"</ol>
+<ul>Веб-приложение "Электронный дневник"</ul>
+ddf
