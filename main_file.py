@@ -56,7 +56,6 @@ def register():
     return render_template('register.html', title='Регистрация', form=form)'''
 
 
-@app.route('/', methods=['GET', 'POST'])
 @app.route('/home', methods=['GET', 'POST'])
 @login_required
 def home_screen():
@@ -69,6 +68,7 @@ def home_screen():
     return render_template('home.html', title='Главная страница')
 
 
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     '''Авторизация'''
@@ -81,7 +81,7 @@ def login():
         ).first()
         if user and user.check_password(form.password.data):
             login_user(user, remember=form.remember_me.data)
-            return redirect("/")
+            return redirect("/home")
         return render_template('login_2.html',
                                message="Неправильный логин или пароль",
                                form=form)
@@ -304,7 +304,8 @@ def delete_teacher(login):
         for j in db_sess.query(Class).all():
             if str(i.id) in j.teacher:
                 j.teacher = j.teacher[:j.teacher.index(str(i.id))] +\
-                            j.teacher[j.teacher.index(str(i.id)) + len(str(i.id)):]
+                            j.teacher[j.teacher.index(str(i.id)) +
+                                      len(str(i.id)):]
         db_sess.delete(i)
         db_sess.commit()
     db_sess.delete(teacher)
@@ -603,7 +604,7 @@ def view_subject():
             teacher += 'Учителя нет'
         subj_2.append([i.subject, teacher])
     if form.validate_on_submit():
-        return redirect('/')
+        return redirect('/home')
     return render_template('view_subject.html',
                            title='Просмотр предметов',
                            form=form,
@@ -956,7 +957,7 @@ def classes_teacher():
     '''Вывод классов, в которых преподаёт учитель'''
     form = Back()
     if form.back.data:
-        return redirect('/')
+        return redirect('/home')
     db_sess = db_session.create_session()
     db_sess.expire_on_commit = False
     classes = db_sess.query(Class).all()
@@ -999,7 +1000,7 @@ def tabletime_teacher():
     '''Вывод расписания учителя на неделю'''
     form = Back()
     if form.back.data:
-        return redirect('/')
+        return redirect('/home')
     lessons = set()
     db_sess = db_session.create_session()
     db_sess.expire_on_commit = False
@@ -1046,7 +1047,9 @@ def tabletime_teacher():
         subj_2.append(i.id_subject)
     for i in classes:
         for j in i.teacher.split():
-            if db_sess.query(SchoolPlan).filter(SchoolPlan.id == int(j), SchoolPlan.id_teacher == a).first() != None:
+            if db_sess.query(SchoolPlan).filter(
+                    SchoolPlan.id == int(j), SchoolPlan.id_teacher == a
+            ).first() is not None:
                 lessons.add(i.id)
     for i in lessons:
         sch = db_sess.query(Schedule).filter(
@@ -1132,7 +1135,7 @@ def lessons_pupil():
     db_sess = db_session.create_session()
     db_sess.expire_on_commit = False
     if form.back.data:
-        return redirect('/')
+        return redirect('/home')
     lessons = current_user.input_data_pupil[0].schedule_orm.schedule
     teachers = current_user.input_data_pupil[0].schedule_orm.class_name.teacher
     mon = [['1 урок. 8:00 - 8:40\n', '-',
@@ -1298,7 +1301,7 @@ def class_pupil():
     db_sess = db_session.create_session()
     db_sess.expire_on_commit = False
     if form.back.data:
-        return redirect('/')
+        return redirect('/home')
     people = db_sess.query(Pupil).filter(
         Pupil.id_class == current_user.input_data_pupil[0].id_class
     ).all()
