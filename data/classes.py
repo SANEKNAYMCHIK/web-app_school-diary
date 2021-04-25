@@ -9,5 +9,7 @@ class Class(SqlAlchemyBase):
                            autoincrement=True, primary_key=True)
     name_class = sqlalchemy.Column(sqlalchemy.String, nullable=False)
     teacher = sqlalchemy.Column(sqlalchemy.String, nullable=False)
-    name_class_schedule = orm.relation('Schedule', back_populates='class_name')
-    name_class_pupil = orm.relation('Pupil', back_populates='name_class_orm')
+    name_class_schedule = orm.relation('Schedule',
+                                       back_populates='class_name')
+    name_class_pupil = orm.relation('Pupil',
+                                    back_populates='name_class_orm')

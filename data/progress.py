@@ -12,8 +12,8 @@ class Progress(SqlAlchemyBase):
     )
     id_subject = sqlalchemy.Column(
         sqlalchemy.Integer,
-        sqlalchemy.ForeignKey('schoolplan.id')
+        sqlalchemy.ForeignKey('subjects.id')
     )
     date_of_grade = sqlalchemy.Column(sqlalchemy.String, nullable=False)
     grade = sqlalchemy.Column(sqlalchemy.String, nullable=False)
-    lesson = orm.relation('SchoolPlan')
+    lesson = orm.relation('Subjects')

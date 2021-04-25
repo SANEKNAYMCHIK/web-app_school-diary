@@ -14,7 +14,7 @@
             {% endfor %}
         </p>
         <p>
-            {{ form.type.data }}<br>
+            {{ form.value.label }}<br>
             {{ form.value(class="form-control") }}<br>
             {% for error in form.value.errors %}
                 <div class="alert alert-danger" role="alert">
@@ -24,6 +24,6 @@
         </p>
         <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
         <div>{{ message }}</div>
-        <a class="btn btn-primary" role="button" href="/viewteacher">Вернуться обратно</a>
+        <a class="btn btn-primary" role="button" href="/viewpupil">Вернуться обратно</a>
     </form>
 {% endblock %}

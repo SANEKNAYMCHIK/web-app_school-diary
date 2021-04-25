@@ -36,9 +36,9 @@
                     {% else %}
                         <tr>
                         <th scope="row">{{ loop.index }}</th>
-                        <td>{{ elem.lesson.name_subject.subject }}</td>
-                        <td>{{ elem.grade }}</td>
+                        <td>{{ elem.lesson.subject }}</td>
                         <td>{{ elem.date_of_grade}}</td>
+                        <td>{{ elem.grade }}</td>
                         </tr>
                     {% endif %}
                 {% endfor %}

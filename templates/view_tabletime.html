@@ -29,8 +29,9 @@
                             <div id="collapse1" class="panel-collapse collapse in">
                                 {% for day in mon %}
                                     {% for elem in day %}
-                                        {% if loop.index % 2 != 0 %}
-                                            <li><div class="panel-body">{{ elem }}</div></li>
+                                        {% if loop.index == 1 %}
+                                            <li></li>
+                                            <div class="panel-body">{{ elem }}</div>
                                         {% else %}
                                             <div class="panel-body">{{ elem }}</div>
                                         {% endif %}
@@ -49,8 +50,9 @@
                             <div id="collapse2" class="panel-collapse collapse in">
                                 {% for day in thur %}
                                     {% for elem in day %}
-                                        {% if loop.index % 2 != 0 %}
-                                            <li><div class="panel-body">{{ elem }}</div></li>
+                                        {% if loop.index == 1 %}
+                                            <li></li>
+                                            <div class="panel-body">{{ elem }}</div>
                                         {% else %}
                                             <div class="panel-body">{{ elem }}</div>
                                         {% endif %}
@@ -70,8 +72,9 @@
                             <div id="collapse3" class="panel-collapse collapse in">
                                 {% for day in wedn %}
                                     {% for elem in day %}
-                                        {% if loop.index % 2 != 0 %}
-                                            <li><div class="panel-body">{{ elem }}</div></li>
+                                        {% if loop.index == 1 %}
+                                            <li></li>
+                                            <div class="panel-body">{{ elem }}</div>
                                         {% else %}
                                             <div class="panel-body">{{ elem }}</div>
                                         {% endif %}
@@ -91,8 +94,9 @@
                             <div id="collapse4" class="panel-collapse collapse in">
                                 {% for day in tues %}
                                     {% for elem in day %}
-                                        {% if loop.index % 2 != 0 %}
-                                            <li><div class="panel-body">{{ elem }}</div></li>
+                                        {% if loop.index == 1 %}
+                                            <li></li>
+                                            <div class="panel-body">{{ elem }}</div>
                                         {% else %}
                                             <div class="panel-body">{{ elem }}</div>
                                         {% endif %}
@@ -112,8 +116,9 @@
                             <div id="collapse5" class="panel-collapse collapse in">
                                 {% for day in fri %}
                                     {% for elem in day %}
-                                        {% if loop.index % 2 != 0 %}
-                                            <li><div class="panel-body">{{ elem }}</div></li>
+                                        {% if loop.index == 1 %}
+                                            <li></li>
+                                            <div class="panel-body">{{ elem }}</div>
                                         {% else %}
                                             <div class="panel-body">{{ elem }}</div>
                                         {% endif %}
@@ -133,8 +138,9 @@
                             <div id="collapse6" class="panel-collapse collapse in">
                                 {% for day in sat %}
                                     {% for elem in day %}
-                                        {% if loop.index % 2 != 0 %}
-                                            <li><div class="panel-body">{{ elem }}</div></li>
+                                        {% if loop.index == 1 %}
+                                            <li></li>
+                                            <div class="panel-body">{{ elem }}</div>
                                         {% else %}
                                             <div class="panel-body">{{ elem }}</div>
                                         {% endif %}

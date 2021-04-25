@@ -2,7 +2,6 @@ from . import classes
 from . import input_data
 from . import pupil
 from . import schedule
-from . import schedule_on_day
 from . import subjects
 from . import teacher
 from . import week_day

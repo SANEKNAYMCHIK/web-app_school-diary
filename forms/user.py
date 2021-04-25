@@ -32,6 +32,7 @@ class AddTeacher(FlaskForm):
     surname = StringField('Фамилия учителя', validators=[DataRequired()])
     patronymic = StringField('Отчество учителя', validators=[DataRequired()])
     subjects = SelectMultipleField('Предметы', coerce=int, validators=[DataRequired()])
+    cab = StringField('Кабинет', validators=[DataRequired()])
     login = StringField('Логин', validators=[DataRequired()])
     password = PasswordField('Пароль', validators=[DataRequired()])
     submit = SubmitField('Добавить')
@@ -52,9 +53,15 @@ class ViewClass(FlaskForm):
     submit = SubmitField('Сортировать')
 
 
+class ChangeTeacher(FlaskForm):
+    type = SelectField('Что изменить?', choices=[(1, 'Фамилия'), (2, 'Имя'), (3, 'Отчество'), (4, 'Кабинет')], validators=[DataRequired()])
+    value = StringField("Новые данные", validators=[DataRequired()])
+    submit = SubmitField('Изменить')
+
+
 class ChangePerson(FlaskForm):
     type = SelectField('Что изменить?', choices=[(1, 'Фамилия'), (2, 'Имя'), (3, 'Отчество')], validators=[DataRequired()])
-    value = StringField(validators=[DataRequired()])
+    value = StringField("Новые данные", validators=[DataRequired()])
     submit = SubmitField('Изменить')
 
 
@@ -107,9 +114,10 @@ class ViewTableTime(FlaskForm):
 
 class LessonsChoiceClass(FlaskForm):
     class_ = SelectField('Выберите класс', coerce=int, validators=[DataRequired()])
-    subject = SelectField('Выберите предмет', coerce=int, validators=[DataRequired()])
+    subject = SelectField('Выберите предмет', coerce=int)
     pupil = SelectField('Ученик', coerce=int, validators=[DataRequired()])
     grade = SelectField('Оценка', choices=[(2), (3), (4), (5)], validators=[DataRequired()])
+    class_submit = SubmitField('Выбрать')
     submit = SubmitField('Выбрать')
     submit_2 = SubmitField('Подтвердить')
 

@@ -41,6 +41,15 @@
             {% endfor %}
         </p>
         <p>
+            {{ form.cab.label }}<br>
+            {{ form.cab(class="form-control") }}<br>
+            {% for error in form.cab.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+        <p>
             {{ form.login.label }}<br>
             {{ form.login(class="form-control", type="login") }}<br>
             {% for error in form.login.errors %}

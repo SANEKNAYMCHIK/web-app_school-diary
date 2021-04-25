@@ -15,5 +15,7 @@ class Teacher(SqlAlchemyBase, UserMixin):
         sqlalchemy.String,
         sqlalchemy.ForeignKey('input_data.id')
     )
-    id_teacher_lesson = orm.relation('SchoolPlan', back_populates='teacher_id_orm')
+    cabinet = sqlalchemy.Column(sqlalchemy.String, nullable=False)
+    id_teacher_lesson = orm.relation('SchoolPlan',
+                                     back_populates='teacher_id_orm')
     input_data_orm = orm.relation('InputData')

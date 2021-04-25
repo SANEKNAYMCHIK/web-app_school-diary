@@ -17,5 +17,4 @@ class SchoolPlan(SqlAlchemyBase, UserMixin):
         sqlalchemy.ForeignKey('teacher.id')
     )
     name_subject = orm.relation('Subjects')
-    id_lesson = orm.relation('Progress', back_populates='lesson')
     teacher_id_orm = orm.relation('Teacher')

@@ -6,14 +6,15 @@
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-          crossorigin="anonymous">>
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/style.css">
     <title>{{title}}</title>
 </head>
 <body bgcolor="#000" background="/static/back.jpg">
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
           <a class="navbar-brand" href="/">
-            <img src="/static/ico.png" width="40" height="40" class="d-inline-block align-top" alt="">
+              <img src="/static/ico.png" width="40" height="40" class="d-inline-block align-top" alt="">
               Электронный дневник
           </a>
         {% if current_user.is_authenticated %}
@@ -75,7 +76,7 @@
                 </div>
             </div>
             {% elif current_user.level_of_access == 0 %}
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup_2">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup_2">
                 <div class="navbar-nav">
                     <a class="navbar-brand" href="/tabletimepupil">Расписание</a>
                 </div>
@@ -87,7 +88,7 @@
                 </div>
             </div>
             {% endif %}
-            <a class="btn btn-danger" href="/logout">Выйти</a>
+            <a class="btn btn-danger" href="/logout"> Выйти</a>
         {% else %}
             <a class="btn btn-primary " href="/register">Зарегистрироваться</a>
             <a class="btn btn-success" href="/login">Войти</a>

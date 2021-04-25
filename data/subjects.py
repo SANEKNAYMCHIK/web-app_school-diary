@@ -9,4 +9,4 @@ class Subjects(SqlAlchemyBase):
         sqlalchemy.Integer, primary_key=True, autoincrement=True)
     subject = sqlalchemy.Column(sqlalchemy.String, nullable=False)
     id_lesson = orm.relation('SchoolPlan', back_populates='name_subject')
-    id_schedule_day = orm.relation('ScheduleOnDay', back_populates='lesson')
+    id_subject = orm.relation('Progress', back_populates='lesson')
