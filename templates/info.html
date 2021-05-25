@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Информационная справка</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        {% for elem in value %}
+            <p>{{elem}}</p>
+        {% endfor %}
+    </form>
+{% endblock %}

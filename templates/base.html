@@ -62,6 +62,7 @@
                         </div>
                     </li>
                 </ul>
+                <a class="navbar-brand" href="/moderinfo">Справка</a>
             </div>
             {% elif current_user.level_of_access == 1 %}
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -74,6 +75,7 @@
                 <div class="navbar-nav">
                     <a class="navbar-brand" href="/classesteacher">Классы</a>
                 </div>
+                <a class="navbar-brand" href="/teacherinfo">Справка</a>
             </div>
             {% elif current_user.level_of_access == 0 %}
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup_2">
@@ -86,11 +88,11 @@
                 <div class="navbar-nav">
                     <a class="navbar-brand" href="/classpupil">Класс</a>
                 </div>
+                <a class="navbar-brand" href="/pupilinfo">Справка</a>
             </div>
             {% endif %}
             <a class="btn btn-danger" href="/logout"> Выйти</a>
         {% else %}
-            <a class="btn btn-primary " href="/register">Зарегистрироваться</a>
             <a class="btn btn-success" href="/login">Войти</a>
         {% endif %}
     </nav>
